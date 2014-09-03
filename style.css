@@ -1,14 +1,22 @@
 /* Basic Style */
+@import url(http://fonts.googleapis.com/css?family=Lobster+Two|Raleway);
+
 body {
   background: #fff;
   color: #333;
-  font-family: Lato, sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 .container {
   display: block;
   width: 400px;
   margin: 100px auto 0;
 }
+
+div.container > h1 {
+  font-family: 'Lobster Two', cursive;
+  text-align: center;
+}
+
 ul {
   margin: 0;
   padding: 0;
