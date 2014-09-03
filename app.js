@@ -46,20 +46,29 @@ var addTask = function() {
 	//append listItem to incompleteTasksHolder
 	incompleteTasksHolder.appendChild(listItem);
 	bindTaskEvents(listItem, tasksCompleted);
+
+	//clear input value after task is added
+	taskInput.value = "";
 };
 
 
 //Edit an existing task
 var editTask = function() {
-	console.log("Edit task...")
-	//When the Edit button is pressed
-		//if the class of the parent li is .editMode
-			//Switch from .editMode 
-			//label text become the input's value
-		//else
-			//Switch to .editMode
-			//input value becomes the label's text
+	console.log("Edit task...");
+
+	var listItem = this.parentNode;
+
+	var editInput = listItem.querySelector("input[type=text]");
+	var label = listItem.querySelector("label");
+	var containsClass = listItem.classList.contains("editMode");
+
+	if(containsClass) {
+		label.innerText = editInput.value;
+	} else {
+		editInput.value = label.innerText;
+	}
 	//Toggle .editMode on the parent li	
+	listItem.classList.toggle("editMode");
 };
 
 
@@ -108,6 +117,7 @@ var bindTaskEvents = function(taskListItem, checkBoxEventHandler) {
 
 
 addButton.onclick = addTask;
+
 
 for (var i = 0; i < incompleteTasksHolder.children.length; i++) {
 	bindTaskEvents(incompleteTasksHolder.children[i], tasksCompleted);
